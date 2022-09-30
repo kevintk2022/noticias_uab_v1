@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="utf-8">
+
+
+</head>
+
+<body>
+
+	<div layout:fragment="form">
+
+		
+		<br>
+		<form action="" method="post" th:object="${Noticia}" enctype="multipart/form-data">
+			<div class="mb-3">
+				<label for="titulo" class="form-label">Titulo : </label>
+				<input type="text" id="titulo" placeholder="digite el titulo" class="form-control" th:field="*{titulo}">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="contexto" class="form-label">contexto : </label>
+				<textarea id="contexto" placeholder="digite el contexto" class="form-control"
+					th:field="*{contexto}"></textarea>
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('contexto')}" th:errors="*{contexto}">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="fechaPublicacion" class="form-label">fecha publicacion : </label>
+				<input type="date" id="fechaPublicacion" placeholder="digite la fecha de publicacion"
+					class="form-control" th:field="*{fechaPublicacion}">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('fechaPublicacion')}"
+					th:errors="*{fechaPublicacion}">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="youtubeVideoId" class="form-label">youtube ID : </label>
+				<input type="text" id="youtubeVideoId" placeholder="inserte el id del video de youtube"
+					class="form-control" th:field="*{youtubeVideoId}">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('youtubeVideoId')}"
+					th:errors="*{youtubeVideoId}">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="portada" class="form-label">PORTADA : </label>
+				<input type="file" name="portada" id="portada" class="form-control" th:field="*{portada}">
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('portada')}" th:errors="*{portada}">
+				</div>
+			</div>
+			<div class="mb-3">
+				<label for="generos" class="form-label">GENERO : </label>
+				<select id="generos" class="form-control" th:field="*{generos}" multiple>
+					<option th:each="genero: ${generos}" th:value="${genero.id}" th:text="${genero.titulo}">
+					</option>
+				</select>
+				<div class="invalid-feedback" th:if="${#fields.hasErrors('generos')}" th:errors="*{generos}">
+				</div>
+
+			</div>
+			<div class="text-end">
+				<button type="submit" class="btn btn-primary">GUARDAR </button>
+			</div>
+		</form>
+
+
+
+
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
+
+
+
+
+</body>
+
+</html>
